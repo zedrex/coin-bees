@@ -37,7 +37,7 @@ public class HUDManager : MonoBehaviour
     void Start()
     {
         gameText.text = "Collect Coins & Avoid Bees";
-        scoreText.text = " x " + player.score + " of 25";
+        scoreText.text = "x " + player.score + " of 25";
         Invoke("VanishGameText", 3.0f);
         Invoke("VanishGuideText", 3.0f);
     }
@@ -45,7 +45,7 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = " x " + player.score + " of 25";
+        scoreText.text = "x " + player.score + " of 25";
         Debug.Log(player.score);
 
         if (player.hasWon)
