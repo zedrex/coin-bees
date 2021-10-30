@@ -1,0 +1,64 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class HUDManager : MonoBehaviour
+{
+    [SerializeField]
+    private Player player;
+
+    [SerializeField]
+    private TextMeshProUGUI scoreText;
+
+    [SerializeField]
+    private SpriteRenderer heart0;
+
+    [SerializeField]
+    private SpriteRenderer heart1;
+
+    [SerializeField]
+    private SpriteRenderer heart2;
+
+    [SerializeField]
+    private Sprite heartFull;
+
+    [SerializeField]
+    private Sprite heartEmpty;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        scoreText.SetText("X " + player.score);
+
+        if (player.life == 0)
+        {
+            heart0.sprite = heartEmpty;
+            heart1.sprite = heartEmpty;
+            heart2.sprite = heartEmpty;
+        }
+        else if (player.life == 1)
+        {
+            heart0.sprite = heartFull;
+            heart1.sprite = heartEmpty;
+            heart2.sprite = heartEmpty;
+        }
+        else if (player.life == 2)
+        {
+            heart0.sprite = heartFull;
+            heart1.sprite = heartFull;
+            heart2.sprite = heartEmpty;
+        }
+        else if (player.life == 3)
+        {
+            heart0.sprite = heartFull;
+            heart1.sprite = heartFull;
+            heart2.sprite = heartFull;
+        }
+    }
+}
