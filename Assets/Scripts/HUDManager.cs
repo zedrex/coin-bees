@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
@@ -11,13 +10,13 @@ public class HUDManager : MonoBehaviour
     private Player player;
 
     [SerializeField]
-    private TextMeshProUGUI scoreText;
+    private Text scoreText;
 
     [SerializeField]
-    private TextMeshProUGUI gameText;
+    private Text gameText;
 
     [SerializeField]
-    private TextMeshProUGUI guideText;
+    private Text guideText;
 
     [SerializeField]
     private Image heart0;
@@ -37,8 +36,8 @@ public class HUDManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameText.SetText("Collect Coins & Avoid Bees");
-        scoreText.SetText(" x " + player.score + " of 25");
+        gameText.text = "Collect Coins & Avoid Bees";
+        scoreText.text = " x " + player.score + " of 25";
         Invoke("VanishGameText", 3.0f);
         Invoke("VanishGuideText", 3.0f);
     }
@@ -46,19 +45,19 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.SetText(" x " + player.score + " of 25");
+        scoreText.text = " x " + player.score + " of 25";
         Debug.Log(player.score);
 
         if (player.hasWon)
         {
-            gameText.SetText("You Win!");
+            gameText.text = "You Win!";
             Invoke("RestartLevel", 1.5f);
         }
 
 
         if (player.isDead)
         {
-            gameText.SetText("Game Over");
+            gameText.text = "Game Over";
             Invoke("RestartLevel", 1.5f);
         }
 
@@ -92,12 +91,12 @@ public class HUDManager : MonoBehaviour
 
     void VanishGameText()
     {
-        gameText.SetText("");
+        gameText.text = "";
     }
 
     void VanishGuideText()
     {
-        guideText.SetText("");
+        guideText.text = "";
     }
 
     void RestartLevel()
