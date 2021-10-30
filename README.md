@@ -1,5 +1,5 @@
 <h1 align="center">Coin Bees</h1>
-<h3 align="center">Simple 2D platformer made using Unity v2020.3.18 and Kenney's 2D platformer assets.</h3>
+<h3 align="center">Simple 2D platformer made in Unity</h3>
 <br>
 
 <ul>
