@@ -7,6 +7,9 @@ public class PlayerDamage : MonoBehaviour
     [SerializeField]
     public Player player;
 
+    [SerializeField]
+    private AudioSource damageSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,7 @@ public class PlayerDamage : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemies"))
         {
             Destroy(collision.gameObject);
+            damageSound.Play();
             player.life--;
         }
     }

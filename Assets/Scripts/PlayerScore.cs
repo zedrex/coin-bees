@@ -7,6 +7,9 @@ public class PlayerScore : MonoBehaviour
     [SerializeField]
     public Player player;
 
+    [SerializeField]
+    private AudioSource coinSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,7 @@ public class PlayerScore : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);
+            coinSound.Play();
             player.score++;
         }
     }

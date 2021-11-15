@@ -7,6 +7,10 @@ public class PlayerWin : MonoBehaviour
     [SerializeField]
     public Player player;
 
+
+    [SerializeField]
+    private AudioSource winSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +28,7 @@ public class PlayerWin : MonoBehaviour
         if (collision.gameObject.CompareTag("Flag") && player.score == 25)
         {
             Destroy(collision.gameObject);
+            winSound.Play();
             player.hasWon = true;
         }
     }

@@ -1,24 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class HUDManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private Player player;
 
     [SerializeField]
-    private TextMeshProUGUI scoreText;
+    private Text scoreText;
 
     [SerializeField]
-    private SpriteRenderer heart0;
+    private Text gameText;
 
     [SerializeField]
-    private SpriteRenderer heart1;
+    private Text guideText;
 
     [SerializeField]
-    private SpriteRenderer heart2;
+    private Image heart0;
+
+    [SerializeField]
+    private Image heart1;
+
+    [SerializeField]
+    private Image heart2;
 
     [SerializeField]
     private Sprite heartFull;
@@ -29,12 +36,31 @@ public class HUDManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameText.text = "Collect Coins & Avoid Bees";
+        scoreText.text = "x " + player.score + " of 25";
+        Invoke("VanishGameText", 3.0f);
+        Invoke("VanishGuideText", 3.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        scoreText.SetText("X " + player.score);
+        scoreText.text = "x " + player.score + " of 25";
+        Debug.Log(player.score);
+
+        if (player.hasWon)
+        {
+            gameText.text = "You Win!";
+            Invoke("RestartLevel", 1.5f);
+        }
+
+
+        if (player.isDead)
+        {
+            gameText.text = "Game Over";
+            Invoke("RestartLevel", 1.5f);
+        }
+
 
         if (player.life == 0)
         {
@@ -60,5 +86,21 @@ public class HUDManager : MonoBehaviour
             heart1.sprite = heartFull;
             heart2.sprite = heartFull;
         }
+    }
+
+
+    void VanishGameText()
+    {
+        gameText.text = "";
+    }
+
+    void VanishGuideText()
+    {
+        guideText.text = "";
+    }
+
+    void RestartLevel()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
